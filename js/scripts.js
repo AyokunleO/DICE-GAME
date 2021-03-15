@@ -80,7 +80,7 @@ if(playing){
      el(`#current--${1}`).textContent = (`Scoreboard: ${scoreBoard[1]}`);
      // Hide the dice
 //  diceEL.classList.add('hidden');
-diceEL.src=`../images/game-over.png`;
+diceEL.src=`images/game-over.png`;
  el(`.player--${activePlayer}`).classList.add('player--winner');
  el(`.player--${activePlayer}`).classList.remove('player--active');
  } else {
