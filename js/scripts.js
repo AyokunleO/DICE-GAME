@@ -5,6 +5,8 @@ function el(id) {
 
 
 // Element Selection
+const play1 = el("#name--0");
+const play2 = el("#name--1");
 const playerZero = el(".player--0");
 const playerOne = el(".player--1");
 
@@ -27,9 +29,15 @@ currentScore = 0;
 activePlayer = 0;
 playing = true;
 scoreBoard = [0, 0];
+players = [];
+
+players[0] = prompt("Enter Player One's name");
+players[1] = prompt("Enter Player Two's name");
+
+play1.textContent = players[0];
+play2.textContent = players[1];
 
 // Setting all values to zero
-// function reset(){
     scoreZero.textContent = 0;
     scoreOne.textContent = 0;
     currentZero.textContent = 0;
@@ -39,7 +47,7 @@ scoreBoard = [0, 0];
     playerOne.classList.remove('player--winner');
     playerZero.classList.add('player--active');
     playerOne.classList.remove('player--active');
-// }
+
 
 
 
@@ -73,13 +81,19 @@ if(playing){
  el(`#score--${activePlayer}`).textContent = scores[activePlayer];
      // Check if players score is >= 100
  if(scores[activePlayer]>= 100){
+    el(`#score--${activePlayer}`).textContent = "Winner";
+    el(`#score--${1 - activePlayer}`).classList.add("hidden");
+    el(`#name--${1 - activePlayer}`).classList.add("hidden");
+
     //  Change the state of our game to false
      playing = false;
      scoreBoard[activePlayer] += 1;
      el(`#current--${0}`).textContent = (`Scoreboard: ${scoreBoard[0]}`);
      el(`#current--${1}`).textContent = (`Scoreboard: ${scoreBoard[1]}`);
-     // Hide the dice
-//  diceEL.classList.add('hidden');
+     // Hide the Hold and roll dice
+    btnHold.classList.add('hidden');
+    btnRoll.classList.add('hidden');
+
 diceEL.src=`images/game-over.png`;
  el(`.player--${activePlayer}`).classList.add('player--winner');
  el(`.player--${activePlayer}`).classList.remove('player--active');
